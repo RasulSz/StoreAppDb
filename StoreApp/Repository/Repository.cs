@@ -80,5 +80,43 @@ namespace StoreApp.Repository
                 }
             }
         }
+        public async void Insert(string name, int price, int quantity)
+        {
+            using (var conn = new SqlConnection())
+            {
+                conn.ConnectionString = cs;
+                conn.Open();
+
+                string query = $@" INSERT INTO Products([Name],[Price],[Quantity])
+                                VALUES(@name,@price,@quantity)";
+
+                SqlCommand command = conn.CreateCommand();
+                command.CommandText = query;
+
+                var paramName = new SqlParameter();
+                paramName.ParameterName = "@name";
+                paramName.SqlDbType = SqlDbType.NVarChar;
+                paramName.Value = name;
+
+                var paramPrice = new SqlParameter();
+                paramPrice.ParameterName = "@price";
+                paramPrice.SqlDbType = SqlDbType.Int;
+                paramPrice.Value = price;
+
+                var paramQuantity = new SqlParameter();
+                paramQuantity.ParameterName = "@quantity";
+                paramQuantity.SqlDbType = SqlDbType.Int;
+                paramQuantity.Value = quantity;
+
+                command.Parameters.Add(paramName);
+                command.Parameters.Add(paramPrice);
+                command.Parameters.Add(paramQuantity);
+
+                using (var reader = await command.ExecuteReaderAsync())
+                {
+
+                }
+            }
+        }
     }
 }
