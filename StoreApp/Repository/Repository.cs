@@ -20,7 +20,7 @@ namespace StoreApp.Repository
         {
         }
 
-        public async Task GetAllProduct(ObservableCollection<Product> _products)
+        public async Task GetAllProduct(ObservableCollection<Product> Products)
         {
             using (var conn = new SqlConnection())
             {
@@ -45,13 +45,13 @@ namespace StoreApp.Repository
                             Price = int.Parse(reader[3].ToString()),
                             CategoryId = int.Parse(reader[4].ToString()),
                         };
-                        _products.Add(product);
+                        Products.Add(product);
                     }
                 }
             }
         }
 
-        public async Task GetAllCategories(ObservableCollection<Category> _categories)
+        public async Task GetAllCategories(ObservableCollection<Category> Categories)
         {
             using (var conn = new SqlConnection())
             {
@@ -73,7 +73,7 @@ namespace StoreApp.Repository
                             Id = int.Parse(reader[0].ToString()),
                             Name = reader[1].ToString(),
                         };
-                        _categories.Add(category);
+                        Categories.Add(category);
                     }
                 }
             }

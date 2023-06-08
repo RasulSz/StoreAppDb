@@ -49,22 +49,7 @@ namespace StoreApp.ViewModels.MainWindowViewModel
             await ProductsRepo.GetAllProduct(AllProducts);
         }
 
-        public async void CallCategoryUC()
-        {
-            await GetAllCategories();
-
-            App.MyCategories.Children.Clear();
-            CategoriesUserControl categoriesUC;
-            CategoriesUserControlViewModel categoryUcViewModel;
-            for (int i = 0; i < AllCategories.Count; i++)
-            {
-                categoriesUC = new CategoriesUserControl();
-                categoryUcViewModel = new CategoriesUserControlViewModel();
-                categoryUcViewModel.CategoryName = AllCategories[i].Name;
-                categoriesUC.DataContext = categoryUcViewModel;
-                App.MyCategories.Children.Add(categoriesUC);
-            }
-        }
+      
 
         public async void CallProductUC()
         {
@@ -92,16 +77,14 @@ namespace StoreApp.ViewModels.MainWindowViewModel
             ProductsRepo = new Repositories();
 
             CallProductUC();
-            CallCategoryUC();
 
             InsertCommand = new RelayCommand((obj) =>
             {
-                //InsertUserControl insertUC = new InsertUserControl();
-                //InsertUCViewModel insertUCVM = new InsertUCViewModel();
-                //App.MyGrid.Children.Clear();
-                //App.MyGrid.Children.Add(insertUC);
+                InsertUserControl insertUC = new InsertUserControl();
+                InsertUserControlViewModel insertUCVM = new InsertUserControlViewModel();
+                App.MyShow.Children.Clear();
+                App.MyShow.Children.Add(insertUC);
             });
-
         }
     }
 }

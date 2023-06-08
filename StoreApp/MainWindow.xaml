@@ -18,10 +18,9 @@
 
         <Label FontWeight="ExtraLight" FontFamily="Comic Sans Ms" FontSize="50" HorizontalAlignment="Center" Foreground="Chocolate">OneSec Market</Label>
         <Button Background="Beige" FontWeight="ExtraLight" FontFamily="Comic Sans Ms" Command="{Binding InsertCommand}" Grid.Column="1" FontSize="30" Foreground="Chocolate">INSERT</Button>
-        <ScrollViewer Grid.Row="1">
+        <ScrollViewer Grid.Row="1" Grid.ColumnSpan="2">
             <WrapPanel Name="Panel"></WrapPanel>
         </ScrollViewer>
-        <Label Grid.Row="1" Grid.Column="1" FontSize="20" Foreground="Chocolate">Categories</Label>
         <WrapPanel Name="CategoriesWrap" Grid.Row="1" Grid.Column="1" Margin="0,35,0,0"></WrapPanel>
     </Grid>
 </Window>

@@ -20,9 +20,9 @@
         <Label FontSize="40" HorizontalAlignment="Right" VerticalAlignment="Center">Name : </Label>
         <Label FontSize="40" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="1">Price : </Label>
         <Label FontSize="40" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="2">Quantity : </Label>
-        <TextBox x:Name="nametxt" Grid.Column="1" Text="{Binding Pname}"></TextBox>
-        <TextBox x:Name="pricetxt" Grid.Row="1" Grid.Column="1" Text="{Binding Pprice}"></TextBox>
-        <TextBox x:Name="quantitytxt" Grid.Row="2" Grid.Column="1" Text="{Binding Pquantity}"></TextBox>
+        <TextBox x:Name="nametxt" Grid.Column="1" Text="{Binding PName}"></TextBox>
+        <TextBox x:Name="pricetxt" Grid.Row="1" Grid.Column="1" Text="{Binding PPrice}"></TextBox>
+        <TextBox x:Name="quantitytxt" Grid.Row="2" Grid.Column="1" Text="{Binding PQuantity}"></TextBox>
         <Button FontSize="40" Grid.Column="1" Grid.Row="3" Background="ForestGreen" Command="{Binding InsertCommand}">Insert</Button>
         <Button FontSize="40" Grid.Row="3" Background="Red" Command="{Binding BackCommand}">Back</Button>
     </Grid>
