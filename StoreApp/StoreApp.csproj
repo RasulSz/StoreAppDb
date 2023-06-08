@@ -60,6 +60,7 @@
     <Compile Include="ViewModels\BaseViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel\MainViewModel.cs" />
     <Compile Include="ViewModels\UserControlViewModel\CategoriesUserControlViewModel.cs" />
+    <Compile Include="ViewModels\UserControlViewModel\InsertUserControlViewModel.cs" />
     <Compile Include="ViewModels\UserControlViewModel\ProductsUserControlViewModel.cs" />
     <Compile Include="Views\UserControls\CategoriesUserControl.xaml.cs">
       <DependentUpon>CategoriesUserControl.xaml</DependentUpon>

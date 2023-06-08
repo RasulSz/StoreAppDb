@@ -8,6 +8,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using StoreApp.Repository;
+using System.Data.SqlClient;
+using System.Data;
+using System.Configuration;
+using StoreApp.ViewModels.UserControlViewModel;
+using StoreApp.Views.UserControls;
 
 namespace StoreApp.ViewModels.MainWindowViewModel
 {
@@ -32,43 +37,71 @@ namespace StoreApp.ViewModels.MainWindowViewModel
         }
 
 
-        public Repositories ProductsRepository { get; set; }
+        public Repositories ProductsRepo { get; set; }
 
-
-        public MainViewModel()
+        public async Task GetAllCategories()
         {
-            ProductsRepository = new Repositories();
-            AllProducts = ProductsRepo.GetAllProduct();
+            await ProductsRepo.GetAllCategories(AllCategories);
+        }
 
-            AllCategories = ProductsRepo.GetAllCategories();
+        public async Task GetAllProducts()
+        {
+            await ProductsRepo.GetAllProduct(AllProducts);
+        }
 
-            ProductUC productUC;
-            ProductsViewModel productsViewModel;
+        public async void CallCategoryUC()
+        {
+            await GetAllCategories();
+
+            App.MyCategories.Children.Clear();
+            CategoriesUserControl categoriesUC;
+            CategoriesUserControlViewModel categoryUcViewModel;
+            for (int i = 0; i < AllCategories.Count; i++)
+            {
+                categoriesUC = new CategoriesUserControl();
+                categoryUcViewModel = new CategoriesUserControlViewModel();
+                categoryUcViewModel.CategoryName = AllCategories[i].Name;
+                categoriesUC.DataContext = categoryUcViewModel;
+                App.MyCategories.Children.Add(categoriesUC);
+            }
+        }
+
+        public async void CallProductUC()
+        {
+            await GetAllProducts();
+
+            App.MyShow.Children.Clear();
+            ProductsUserControl productUC;
+            ProductsUserControlViewModel productsViewModel;
             for (int i = 0; i < AllProducts.Count; i++)
             {
-                productUC = new ProductUC();
-                productsViewModel = new ProductsViewModel();
+                productUC = new ProductsUserControl();
+                productsViewModel = new ProductsUserControlViewModel();
                 productsViewModel.ProductName = AllProducts[i].Name;
                 productsViewModel.ProductPrice = $"{AllProducts[i].Price} $";
                 productsViewModel.ProductQuantity = AllProducts[i].Quantity;
-                productsViewModel.ImagePath = AllProducts[i].ImagePath;
                 productUC.DataContext = productsViewModel;
-                App.MyGrid.Children.Add(productUC);
+                App.MyShow.Children.Add(productUC);
             }
+        }
 
-            CategoriesUC categoriesUC;
-            CategoryUcViewModel categoryUcViewModel;
-            for (int i = 0; i < AllCategories.Count; i++)
-            {
-                categoriesUC = new CategoriesUC();
-                categoryUcViewModel = new CategoryUcViewModel();
-                categoryUcViewModel.CategoryName = AllCategories[i].Name;
-                categoriesUC.DataContext = categoryUcViewModel;
-                App.MyWrapPanel.Children.Add(categoriesUC);
-            }
+        public MainViewModel()
+        {
+            AllProducts = new ObservableCollection<Product>();
+            AllCategories = new ObservableCollection<Category>();
+            ProductsRepo = new Repositories();
+
+            CallProductUC();
+            CallCategoryUC();
 
             InsertCommand = new RelayCommand((obj) =>
             {
-
+                //InsertUserControl insertUC = new InsertUserControl();
+                //InsertUCViewModel insertUCVM = new InsertUCViewModel();
+                //App.MyGrid.Children.Clear();
+                //App.MyGrid.Children.Add(insertUC);
             });
+
         }
+    }
+}

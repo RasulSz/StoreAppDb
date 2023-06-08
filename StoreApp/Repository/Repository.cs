@@ -13,8 +13,6 @@ namespace StoreApp.Repository
 {
     public class Repositories
     {
-        ObservableCollection<Product> Products = new ObservableCollection<Product>();
-        ObservableCollection<Category> Categories = new ObservableCollection<Category>();
         SqlConnection conn;
         string cs = ConfigurationManager.ConnectionStrings["myConn"].ConnectionString;
 
