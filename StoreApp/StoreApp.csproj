@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -57,6 +58,15 @@
     </ApplicationDefinition>
     <Compile Include="Repository\Repository.cs" />
     <Compile Include="ViewModels\BaseViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModels\UserControlViewModel\CategoriesUserControlViewModel.cs" />
+    <Compile Include="ViewModels\UserControlViewModel\ProductsUserControlViewModel.cs" />
+    <Compile Include="Views\UserControls\CategoriesUserControl.xaml.cs">
+      <DependentUpon>CategoriesUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\ProductsUserControl.xaml.cs">
+      <DependentUpon>ProductsUserControl.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -71,6 +81,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\UserControls\CategoriesUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\ProductsUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Category.cs" />
@@ -100,9 +118,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModels\MainWindowViewModel\" />
-    <Folder Include="ViewModels\UserControlViewModel\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

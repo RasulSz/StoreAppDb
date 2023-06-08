@@ -1,5 +1,4 @@
-﻿using StoreApp.ViewModels.MainWindowViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,20 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace StoreApp
+namespace StoreApp.Views.UserControls
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for CategoriesUserControl.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class CategoriesUserControl : UserControl
     {
-        public MainWindow()
+        public CategoriesUserControl()
         {
             InitializeComponent();
-            App.MyShow = Panel;
-            App.MyCategories = CategoriesWrap;
-            var vm = new MainViewModel();
-            this.DataContext = vm;
         }
     }
 }
