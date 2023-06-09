@@ -14,10 +14,11 @@ namespace StoreApp.Repository
     public class Repositories
     {
         SqlConnection conn;
-        string cs = ConfigurationManager.ConnectionStrings["myConn"].ConnectionString;
+        string cs = "";
 
         public Repositories()
         {
+            cs = ConfigurationManager.ConnectionStrings["myConn"].ConnectionString;
         }
 
         public async Task GetAllProduct(ObservableCollection<Product> Products)
